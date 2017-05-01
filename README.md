@@ -1,5 +1,5 @@
 # DeckTracker v1.0.6
-Universal Deck Tracker for collectible card games such as The Elder Scrolls: Legends and Eternal.
+**Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/).
 
 ## Installation
 For the initial install please download the [UniversalDeckTracker.exe](https://github.com/extesy/DeckTracker/releases/latest) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
