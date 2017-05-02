@@ -1,6 +1,13 @@
 # DeckTracker v1.0.6
 **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/).
 
+## Keyboard shortcuts
+* F1 - show/hide entire Deck Tracker UI
+* F2 - show/hide player's deck
+* F3 - show/hide opponent's deck
+* F4 - show/hide rank display (only for Eternal)
+* F5 - show/hide random deck from the player's collection for test purposes
+
 ## Installation
 For the initial install please download the [UniversalDeckTracker.exe](https://github.com/extesy/DeckTracker/releases/latest) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
 
