@@ -1,4 +1,4 @@
-# DeckTracker v1.0.6
+# DeckTracker v1.0.8
 **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/).
 
 ## Keyboard shortcuts
