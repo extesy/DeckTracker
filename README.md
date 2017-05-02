@@ -19,6 +19,9 @@ There are two options:
 ## Uninstall
 Use the standard Windows `Add or Remove Programs` window and find `Universal Deck Tracker` closer to the end of the list.
 
+## Known issues
+* After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
+
 ## Reporting problems
 Please [open the issue](https://github.com/extesy/DeckTracker/issue) and describe the problem and the steps to reproduce it. If the problem is visual then please also include screenshots.
 
