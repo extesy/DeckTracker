@@ -1,4 +1,4 @@
-# DeckTracker v1.0.8
+# DeckTracker v1.0.9
 Automatic in-game **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is fully compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
 ## Keyboard shortcuts
