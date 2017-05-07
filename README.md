@@ -1,4 +1,4 @@
-# DeckTracker v1.0.9
+# DeckTracker v1.0.10
 Automatic in-game **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is fully compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
 ## Keyboard shortcuts
@@ -20,7 +20,6 @@ There are two options:
 Use the standard Windows `Add or Remove Programs` window and find `Universal Deck Tracker` closer to the end of the list.
 
 ## Known issues
-* Arena game modes for The Elder Scrolls: Legends have not been tested at all. Will probably not work correctly.
 * If deck tracker is started after the game then it might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
 
