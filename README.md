@@ -26,6 +26,6 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
 
 ## Reporting problems
-Please [open the issue](https://github.com/extesy/DeckTracker/issue) and describe the problem and the steps to reproduce it. If the problem is visual then please also include screenshots.
+Please [open the issue](https://github.com/extesy/DeckTracker/issues) and describe the problem and the steps to reproduce it. If the problem is visual then please also include screenshots.
 
 In some cases it is also necessary to attach debug log files. To enable debug logging launch the tracker with `--debug` command line parameter. You can either update the desktop shortcut to include this parameter or use command line. Debug logs will be available at `C:\Users\{profile}\AppData\Roaming\UniversalDeckTracker` location and have `*.log` extension.
