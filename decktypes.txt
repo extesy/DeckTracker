@@ -1,0 +1,46 @@
+$Eternal|GameType=="Eternal"
+|Neutral|Colors.Count==0
+|$Mono|Colors.Count==1
+||Fire|Colors.Contains("Fire")
+||Time|Colors.Contains("Time")
+||Justice|Colors.Contains("Justice")
+||Prime|Colors.Contains("Primal")
+||Shadow|Colors.Contains("Shadow")
+|$Factions|Colors.Count>=2
+||Argenport|Colors.Contains("Justice","Shadow")
+||Combrei|Colors.Contains("Time","Justice")
+|||Big Combrei|Cards.Contains("Knight-Chancellor Siraf","Mystic Ascendant","Marshal Ironthorn")
+|||Combrei Aggro|Cards.Contains("Initiate of the Sands","Awakened Student","Xenan Obelisk")
+||Elysian|Colors.Contains("Time","Primal")
+|||Elysian Shimmerpack|Cards.Contains("Shimmerpack")
+||Feln|Colors.Contains("Primal","Shadow")
+||Hooru|Colors.Contains("Justice","Primal")
+||Praxis|Colors.Contains("Fire","Time")
+||Rakano|Colors.Contains("Fire","Justice")
+|||Traditional Armory|Cards.ContainsAny(3,"Rakano Artisan","Rolant's Favor","Armorsmith","Sword of Icaria")
+||Skycrag|Colors.Contains("Fire","Primal")
+||Stonescar|Colors.Contains("Fire","Shadow")
+|||Stonescar Burn|Cards.Contains("Flame Blast","Torch","Obliterate")
+||Xenan|Colors.Contains("Time","Shadow")
+|Multicolor|Colors.Count>=3
+||$FJP|Colors.Contains("Fire","Justice","Primal")
+|||Icaria Blue|Cards.Contains("Sword of Icaria", "Rise to the Challenge")
+$The Elder Scrolls: Legends|GameType=="TheElderScrollsLegends"
+|Neutral|Colors.Count==0
+|$Mono|Colors.Count==1
+||Strength|Colors.Contains("Strength")
+||Intelligence|Colors.Contains("Intelligence")
+||Willpower|Colors.Contains("Willpower")
+||Agility|Colors.Contains("Agility")
+||Endurance|Colors.Contains("Endurance")
+|$Factions|Colors.Count==2
+||Archer|Colors.Contains("Strength","Agility")
+||Assassin|Colors.Contains("Agility","Intelligence")
+||Battlemage|Colors.Contains("Strength","Intelligence")
+||Crusader|Colors.Contains("Willpower","Strength")
+||Mage|Colors.Contains("Intelligence","Willpower")
+||Monk|Colors.Contains("Agility","Willpower")
+||Scout|Colors.Contains("Endurance","Agility")
+||Sorcerer|Colors.Contains("Endurance","Intelligence")
+||Spellsword|Colors.Contains("Endurance","Willpower")
+||Warrior|Colors.Contains("Strength","Endurance")
