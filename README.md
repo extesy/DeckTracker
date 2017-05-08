@@ -21,6 +21,12 @@ There are two options:
 ## Uninstall
 Use the standard Windows `Add or Remove Programs` window and find `Universal Deck Tracker` closer to the end of the list.
 
+## FAQ: Frequently Asked Questions
+* How to disable the in-game UI but still track winrates?
+> Press F1 (and see the [keyboard shortcuts](#keyboard-shortcuts) section)
+* How to move the deck lists on the screen to a different position?
+> Just drag and drop the deck list.
+
 ## Known issues
 * If deck tracker is started after the game client then it sometimes might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
