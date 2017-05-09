@@ -3,11 +3,17 @@ Automatic in-game **Universal Deck Tracker** for collectible card games such as 
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
 
+# Features
+* Detects all your decks, no manual entry required.
+* Automatic in-game tracking of the remaining cards and the opponent's played cards.
+* No separate overlay capture window needed - very convenient for twitch streamers.
+* Tracks winrates for your decks against each type of the opponent decks.
+
 ## Keyboard shortcuts
 * F1 - show/hide entire Deck Tracker UI
 * F2 - show/hide player's deck
 * F3 - show/hide opponent's deck
-* F4 - show/hide rank display (only for Eternal)
+* F4 - show/hide rank display (when available)
 * F5 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
