@@ -1,4 +1,4 @@
-# DeckTracker v1.0.11
+# DeckTracker v1.0.12
 Automatic in-game **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
@@ -26,6 +26,8 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 > Press F1 (and see the [keyboard shortcuts](#keyboard-shortcuts) section)
 * How to move the deck lists on the screen to a different position?
 > Just drag and drop the deck list.
+* How to resize deck lists?
+> Resizer area is a strip located along the right side and also along the bottom side of the deck list. Drag and drop in that area to resize.
 
 ## Known issues
 * If deck tracker is started after the game client then it sometimes might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
