@@ -9,6 +9,8 @@ This tracker also tries to automatically classify the archetype of the decks you
 * No separate overlay capture window needed - very convenient for twitch streamers.
 * Tracks winrates for your decks against each type of the opponent decks.
 
+![Eternal](https://cloud.githubusercontent.com/assets/65872/25882677/268bfb26-34fa-11e7-817b-dc0add4c3b4a.jpg)
+
 ## Keyboard shortcuts
 * F1 - show/hide entire Deck Tracker UI
 * F2 - show/hide player's deck
