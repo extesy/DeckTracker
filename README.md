@@ -36,6 +36,7 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 > Resizer area is a strip located along the right side and also along the bottom side of the deck list. Drag and drop in that area to resize.
 
 ## Known issues
+* Windows 10 S has not been tested. This is a new special Windows version with internal runtime limitations that might prevent Deck Tracker from working. Please use regular Windows 10 (Home or Pro) instead.
 * If deck tracker is started after the game client then it sometimes might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
 
