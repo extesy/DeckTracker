@@ -1,4 +1,4 @@
-# DeckTracker v1.0.18
+# DeckTracker v1.0.19
 Automatic in-game **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
@@ -40,7 +40,6 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 > Yes, it automatically uploads game replays for aggregation and metagame analysis. Nothing else is shared.
 
 ## Known issues
-* Windows 10 S has not been tested. This is a new special Windows version with internal runtime limitations that might prevent Deck Tracker from working. Please use regular Windows 10 (Home or Pro) instead.
 * If deck tracker is started after the game client then it sometimes might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
 
