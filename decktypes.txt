@@ -6,7 +6,7 @@ $Eternal|GameType=="Eternal"
 ||Justice|Colors.Contains("Justice")
 ||Prime|Colors.Contains("Primal")
 ||Shadow|Colors.Contains("Shadow")
-|$Factions|Colors.Count>=2
+|$Factions|Colors.Count==2
 ||Argenport|Colors.Contains("Justice","Shadow")
 ||Combrei|Colors.Contains("Time","Justice")
 |||Big Combrei|Cards.Contains("Knight-Chancellor Siraf","Mystic Ascendant","Marshal Ironthorn")
@@ -15,10 +15,10 @@ $Eternal|GameType=="Eternal"
 ||Elysian|Colors.Contains("Time","Primal")
 |||Elysian Shimmerpack|Cards.Contains("Shimmerpack")
 |||Crown of Possibilities|Cards.Contains("Crown of Possibilities")
-||||Clockroach Possibilities|Cards.Contains("Crown of Possibilities", "Clockroach")
+||||Clockroach Possibilities|Cards.Contains("Clockroach")
 ||Feln|Colors.Contains("Primal","Shadow")
 |||Scream|Cards.Contains("Haunting Scream", "Dark Return")
-||||Scream Reanimator|Cards.Contains("Haunting Scream", "Grasphing at Shadows", "Vara, Fate-Touched") 
+||||Scream Reanimator|Cards.Contains("Grasphing at Shadows", "Vara, Fate-Touched") 
 ||Hooru|Colors.Contains("Justice","Primal")
 ||Praxis|Colors.Contains("Fire","Time")
 ||Rakano|Colors.Contains("Fire","Justice")
@@ -43,7 +43,8 @@ $Eternal|GameType=="Eternal"
 ||Multicolored (TJS)|Colors.Contains("Time","Justice","Shadow")
 ||Multicolored (TPS)|Colors.Contains("Time","Primal","Shadow")
 ||Multicolored (JPS)|Colors.Contains("Justice","Primal","Shadow")
-|Four Color|Colors.Count>=4
+|Four Color|Colors.Count==4
+|Five Color|Colors.Count==5
 $The Elder Scrolls: Legends|GameType=="TheElderScrollsLegends"
 |Neutral|Colors.Count==0
 |$Mono|Colors.Count==1
