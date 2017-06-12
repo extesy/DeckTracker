@@ -12,6 +12,8 @@ This tracker also tries to automatically classify the archetype of the decks you
 
 ![Eternal](https://cloud.githubusercontent.com/assets/65872/26518058/aba71222-425c-11e7-8392-ed9981a23c8b.jpg)
 
+![The Elder Scrolls: Legends](https://user-images.githubusercontent.com/65872/27020491-b9daea98-4ef6-11e7-8ce4-7c59df1853a7.jpg)
+
 ## Keyboard shortcuts
 * F1 - show/hide entire Deck Tracker UI
 * F2 - show/hide player's deck
