@@ -1,4 +1,4 @@
-# DeckTracker v1.0.33
+# DeckTracker v1.0.34
 Automatic in-game **Universal Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
@@ -19,7 +19,8 @@ This tracker also tries to automatically classify the archetype of the decks you
 * F2 - show/hide player's deck
 * F3 - show/hide opponent's deck
 * F4 - show/hide deck header with deck archetypes and win rates
-* F5 - show/hide random deck from the player's collection for test purposes
+* F5 - Eternal only: show/hide current player's score (only for ranks below Masters)
+* F11 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
 For the initial install please download the [UniversalDeckTracker.exe](https://github.com/extesy/DeckTracker/releases/latest) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
