@@ -20,7 +20,7 @@ This tracker also tries to automatically classify the archetype of the decks you
 * F2 - show/hide player's deck
 * F3 - show/hide opponent's deck
 * F4 - show/hide deck header with deck archetypes and win rates
-* F5 - Eternal only: show/hide current player's score (only for ranks below Masters)
+* F5 - (Eternal only) show/hide current player's score (only for ranks below Masters)
 * F11 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
