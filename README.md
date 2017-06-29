@@ -3,6 +3,8 @@ Automatic in-game **Universal Deck Tracker** for collectible card games such as 
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
 
+If you love the project and would like to see continuing development, please consider [making a donation](https://pledgie.com/campaigns/34152).
+
 # Features
 * Detects all your decks, no manual entry required.
 * Automatic in-game tracking of the remaining cards and the opponent's played cards.
