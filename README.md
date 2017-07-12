@@ -23,7 +23,6 @@ If you love the project and would like to see it improved, please consider makin
 * F3 - show/hide opponent's deck
 * F4 - show/hide deck header with deck archetypes and win rates
 * F5 - (Eternal only) show/hide current player's score (only for ranks below Masters)
-* F6 - Toggle between showing only original deck list or current deck list (with extra stuffed cards if there are any)
 * F11 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
