@@ -27,12 +27,12 @@ If you love the project and would like to see it improved, please consider makin
 * F11 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
-For the initial install please download the [UniversalDeckTracker.exe](https://github.com/extesy/DeckTracker/releases/latest) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
+For the initial install please download the [UniversalDeckTracker.exe](https://s3-us-west-1.amazonaws.com/decktracker/UniversalDeckTracker.exe) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
 
 ## Update
 There are two options:
 1. When the Deck Tracker is starting, it will attempt to auto-update. If a new build is available, it will be downloaded and applied in background, so after restarting the tracker it will use a new version. This normally happens in a first few seconds to a minute after launching the tracker.
-2. Downloading the [latest installer](https://github.com/extesy/DeckTracker/releases/latest) and running it will achieve the same thing.
+2. Downloading the [latest installer](https://s3-us-west-1.amazonaws.com/decktracker/UniversalDeckTracker.exe) and running it will achieve the same thing.
 
 ## Uninstall
 Use the standard Windows `Add or Remove Programs` window and find `Universal Deck Tracker` closer to the end of the list.
