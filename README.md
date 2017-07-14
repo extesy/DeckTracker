@@ -40,7 +40,7 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 
 ## FAQ: Frequently Asked Questions
 * What are all these percentage numbers under the deck list?
-> Those are probabilities of the next card draw. Colors in the first row match card color. Second row: [C]reature, [A]ction, [S]upport, [I]tem. Third row: three most popular keywords. You can turn the footer on/off by pressing F6.
+> Those are probabilities of the next card draw. Colors in the first row match card color. Second row: for Eternal - **P**ower, **U**nit, **S**pell, **I**tem; for TESL - **C**reature, **A**ction, **S**upport, **I**tem. Third row: three most popular keywords. You can turn the footer on/off by pressing F6.
 * How to move the deck lists on the screen to a different position?
 > Just drag and drop the deck list.
 * How to resize deck lists?
