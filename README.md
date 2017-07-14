@@ -39,12 +39,14 @@ There are two options:
 Use the standard Windows `Add or Remove Programs` window and find `Universal Deck Tracker` closer to the end of the list.
 
 ## FAQ: Frequently Asked Questions
-* How to disable the in-game UI but still track winrates?
-> Press F1 (and see the [keyboard shortcuts](#keyboard-shortcuts) section)
+* What are all these percentage numbers under the deck list?
+> Those are probabilities of the next card draw. Colors in the first row match card color. Second row: [C]reature, [A]ction, [S]upport, [I]tem. Third row: three most popular keywords. You can turn the footer on/off by pressing F6.
 * How to move the deck lists on the screen to a different position?
 > Just drag and drop the deck list.
 * How to resize deck lists?
 > Resizer area is a strip located along the right side and also along the bottom side of the deck list. Drag and drop in that area to resize.
+* How to disable the in-game UI but still track winrates?
+> Press F1 (and see the [keyboard shortcuts](#keyboard-shortcuts) section)
 * How to change detected deck archetypes or add new ones?
 > Create or update `C:\Users\{profile}\AppData\Roaming\UniversalDeckTracker\decktypes.txt` file. If you like your changes, please contribute back to the community by sending a pull request.
 * Does this deck tracker share any data?
