@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$id$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <file src="*.*" target="lib\net462\" exclude="*.pdb;*.ipdb;*.iobj;*.nupkg;*.vshost.*"/>
+  </files>
+</package>

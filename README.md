@@ -1,7 +1,7 @@
 # Universal Deck Tracker
 Automatic in-game **Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
-This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
+This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](DeckTracker.Common/decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
 
 If you love the project and would like to see it improved, please consider making a [donation](https://pledgie.com/campaigns/34152) or show your [continuous support](https://gratipay.com/Deck-Tracker/).
 

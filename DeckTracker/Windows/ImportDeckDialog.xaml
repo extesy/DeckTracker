@@ -1,0 +1,25 @@
+﻿<dialogs:CustomDialog
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:DeckTracker.Windows"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             x:Class="DeckTracker.Windows.ImportDeckDialog"
+             mc:Ignorable="d" dialogs:DialogParticipation.Register="{Binding}"
+             d:DesignHeight="150" d:DesignWidth="300" Title="Import Deck">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="DeckListTextBox" Grid.Row="0" TextWrapping="NoWrap" AcceptsReturn="True"
+                 Text="{Binding DeckList, RelativeSource={RelativeSource AncestorType={x:Type local:ImportDeckDialog}}}"
+                 controls:TextBoxHelper.Watermark="Enter a deck list or a url to legends-decks.com or eternalwarcry.com" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="ImportButton" Margin="10,10,10,10" Content="Import" Click="ImportButton_OnClick" />
+            <Button x:Name="CancelButton" Margin="10,10,10,10" Content="Cancel" Click="CancelButton_OnClick" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</dialogs:CustomDialog>

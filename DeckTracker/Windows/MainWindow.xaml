@@ -1,0 +1,176 @@
+﻿<controls:MetroWindow x:Class="DeckTracker.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:DeckTracker.Windows"
+        xmlns:domain="clr-namespace:DeckTracker.Domain"
+        mc:Ignorable="d"
+        BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"
+        Title="Universal Deck Tracker" Height="415" Width="800" Loaded="OnLoaded" Closing="OnClosing">
+    <controls:MetroWindow.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </controls:MetroWindow.Resources>
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="Report bugs" Click="ReportBugs_OnClick" ToolTip="https://github.com/extesy/decktracker/issues" />
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <controls:DropDownButton Name="GameModeFilter" Grid.Row="0" Grid.Column="0" Content="Game modes" Visibility="{Binding HasGameModes, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 ItemsSource="{Binding Path=GameModes}" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <controls:DropDownButton.DataContext>
+                <domain:GameMode />
+            </controls:DropDownButton.DataContext>
+            <controls:DropDownButton.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsEnabled}" Width="20" Checked="GameModeFilter_Checked" Unchecked="GameModeFilter_Checked" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </controls:DropDownButton.ItemTemplate>
+        </controls:DropDownButton>
+        <Label Name="TotalWinRateLabel" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Content="{Binding WinRate}" />
+        <Label Name="InjectionStateLabel" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+        <ListView Grid.Row="1" Grid.Column="0" Name="DecksListView" ItemsSource="{Binding Path=FilteredDecks}" SelectedItem="{Binding Path=SelectedDeck, Mode=TwoWay}" SizeChanged="DecksListView_SizeChanged">
+            <ListView.DataContext>
+                <domain:Deck />
+            </ListView.DataContext>
+            <ListView.Resources>
+                <ContextMenu x:Key="DecksListViewContextMenu">
+                    <MenuItem Header="Copy to clipboard" Click="ExportPlayerDeckMenuItem_OnClick" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                    <MenuItem Header="Delete deck and all associated stats" Click="DeleteDeckMenuItem_OnClick" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                </ContextMenu>
+                <Style BasedOn="{StaticResource {x:Type ListViewItem}}" TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource DecksListViewContextMenu}" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Deck Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Classification}" Width="75" />
+                    <GridViewColumn Header="Win Rate" DisplayMemberBinding="{Binding Stats[0].WinRate}" Width="75" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GridSplitter Grid.Row="1" Grid.Column="1" Width="10" HorizontalAlignment="Stretch" />
+        <ListView Grid.Row="1" Grid.Column="2" Name="AgainstListView" ItemsSource="{Binding}" SizeChanged="DecksListView_SizeChanged">
+            <ListView.DataContext>
+                <domain:AgainstDeck />
+            </ListView.DataContext>
+            <ListView.Resources>
+                <ContextMenu x:Key="AgainstListViewContextMenu">
+                    <MenuItem Header="Copy all opponent decks to clipboard" Click="ExportOpponentDecksMenuItem_OnClick" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                </ContextMenu>
+                <Style BasedOn="{StaticResource {x:Type ListViewItem}}" TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource AgainstListViewContextMenu}" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Opponent Deck Type" DisplayMemberBinding="{Binding Classification}" />
+                    <GridViewColumn Header="Played" DisplayMemberBinding="{Binding GamesPlayed}" Width="75" />
+                    <GridViewColumn Header="Won" DisplayMemberBinding="{Binding GamesWon}" Width="75" />
+                    <GridViewColumn Header="Win Rate" DisplayMemberBinding="{Binding WinRate}" Width="75" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+<!--
+        <Grid Grid.Row="1" Grid.Column="2" Grid.IsSharedSizeScope="True" Name="AgainstListView">
+            <Grid.DataContext>
+                <domain:AgainstDeck />
+            </Grid.DataContext>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <local:LevelConverter x:Key="LevelConverter" />
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type domain:AgainstDeck}">
+                    <Grid ShowGridLines="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="rowHeaderColumn" />
+                            <ColumnDefinition />
+                            <ColumnDefinition SharedSizeGroup="column1" />
+                            <ColumnDefinition SharedSizeGroup="column2" />
+                            <ColumnDefinition SharedSizeGroup="column3" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Classification}" />
+                        <Rectangle Grid.Column="1">
+                            <Rectangle.Width>
+                                <MultiBinding Converter="{StaticResource LevelConverter}">
+                                    <Binding Path="Level" />
+                                    <Binding ElementName="TreeViewItemToMeasure" Path="ActualWidth" />
+                                </MultiBinding>
+                            </Rectangle.Width>
+                        </Rectangle>
+                        <TextBlock Grid.Column="2" Text="{Binding GamesPlayed}" />
+                        <TextBlock Grid.Column="3" Text="{Binding GamesWon}" />
+                        <TextBlock Grid.Column="4" Text="{Binding WinRate}" />
+                    </Grid>
+                </HierarchicalDataTemplate>
+            </Grid.Resources>
+            <TreeView Grid.Row="0" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontWeight="SemiBold">
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <Grid ShowGridLines="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="rowHeaderColumn" />
+                                <ColumnDefinition />
+                                <ColumnDefinition SharedSizeGroup="column1" />
+                                <ColumnDefinition SharedSizeGroup="column2" />
+                                <ColumnDefinition SharedSizeGroup="column3" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="OPPONENT DECK TYPE" VerticalAlignment="Center" Padding="10 4 4 7" />
+                            <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,0,1,0" />
+                            <TreeViewItem Grid.Column="1">
+                                <TreeViewItem.Header>
+                                    <TreeViewItem Name="TreeViewItemToMeasure" Padding="0" />
+                                </TreeViewItem.Header>
+                                <TreeViewItem.Width>
+                                    <MultiBinding Converter="{StaticResource LevelConverter}">
+                                        <Binding Path="Level" />
+                                        <Binding ElementName="TreeViewItemToMeasure" Path="ActualWidth" />
+                                    </MultiBinding>
+                                </TreeViewItem.Width>
+                            </TreeViewItem>
+                            <Border Grid.Column="2" BorderBrush="LightGray" BorderThickness="0,0,1,0" />
+                            <TextBlock Grid.Column="2" Text="PLAYED" Width="75" VerticalAlignment="Center" Padding="10 4 4 7" />
+                            <Border Grid.Column="3" BorderBrush="LightGray" BorderThickness="0,0,1,0" />
+                            <TextBlock Grid.Column="3" Text="WON" Width="75" VerticalAlignment="Center" Padding="10 4 4 7" />
+                            <Border Grid.Column="4" BorderBrush="LightGray" BorderThickness="0,0,1,0" />
+                            <TextBlock Grid.Column="4" Text="WIN RATE" Width="75" VerticalAlignment="Center" Padding="10 4 4 7" />
+                            <Border Grid.Column="0" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness="0,1,0,0" />
+                        </Grid>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+            </TreeView>
+            <TreeView Grid.Row="1" BorderThickness="0" ItemsSource="{Binding}" />
+        </Grid>
+-->
+        <GridSplitter Grid.Column="0" Grid.Row="2" />
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center">
+            <Button Name="ImportDeckButton" IsEnabled="False" Content="Import deck"
+                    Click="ImportDeckButton_OnClick"
+                    ToolTip="Only works when game client is running and fully initialized"
+                    ToolTipService.ShowOnDisabled="True" Margin="3" />
+            <Button Name="ExportCollectionButton" IsEnabled="False" Content="Export full collection"
+                    Click="ExportCollectionButton_OnClick"
+                    ToolTip="Only works when game client is running and fully initialized"
+                    ToolTipService.ShowOnDisabled="True" Margin="3" />
+        </StackPanel>
+    </Grid>
+</controls:MetroWindow>
