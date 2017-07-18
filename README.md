@@ -48,7 +48,7 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 * How to disable the in-game UI but still track winrates?
 > Press F1 (and see the [keyboard shortcuts](#keyboard-shortcuts) section)
 * How to change detected deck archetypes or add new ones?
-> Create or update `C:\Users\{profile}\AppData\Roaming\UniversalDeckTracker\decktypes.txt` file. If you like your changes, please contribute back to the community by sending a pull request.
+> Create or update `C:\Users\{profile}\AppData\Local\UniversalDeckTracker\decktypes.txt` file. If you like your changes, please contribute back to the community by sending a pull request.
 * Does this deck tracker share any data?
 > Yes, it automatically uploads game replays for aggregation and metagame analysis. Nothing else is shared.
 
