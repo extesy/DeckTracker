@@ -65,7 +65,7 @@ namespace DeckTracker
         private static async void Update()
         {
             try {
-                using (var updateManager = new UpdateManager("https://s3-us-west-1.amazonaws.com/decktracker"))
+                using (var updateManager = await UpdateManager.GitHubUpdateManager("https://github.com/extesy/DeckTracker"))
                     await updateManager.UpdateApp();
             } catch {
             }
