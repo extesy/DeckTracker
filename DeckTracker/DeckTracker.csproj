@@ -155,7 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.4.9.5</Version>
+      <Version>1.5.1</Version>
     </PackageReference>
     <PackageReference Include="JetBrains.Annotations">
       <Version>10.4.0</Version>
@@ -173,7 +173,7 @@
       <Version>4.1.0</Version>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
-      <Version>2.1.2</Version>
+      <Version>2.1.3</Version>
     </PackageReference>
     <PackageReference Include="reactiveui">
       <Version>7.4.0</Version>
@@ -182,7 +182,7 @@
       <Version>2.2.10</Version>
     </PackageReference>
     <PackageReference Include="squirrel.windows">
-      <Version>1.7.6</Version>
+      <Version>1.7.7</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -229,7 +229,7 @@ if $(ConfigurationName) == Release (
 rm -f $(OutDir)*.nupkg
 ..\..\nuget pack "$(ProjectPath)" -Properties Configuration=Release -BasePath $(OutDir) -OutputDirectory $(OutDir)
 mv $(OutDir)*.nupkg $(ProjectName).@(VersionNumber).nupkg
-C:\Users\olega\.nuget\packages\squirrel.windows\1.6.0\tools\Squirrel.com --releasify $(OutDir)$(ProjectName).@(VersionNumber).nupkg --framework-version=net462 --releaseDir=..\Releases
+C:\Users\olega\.nuget\packages\squirrel.windows\1.7.7\tools\Squirrel.com --releasify $(OutDir)$(ProjectName).@(VersionNumber).nupkg --framework-version=net462 --releaseDir=..\Releases -n "/t http://timestamp.digicert.com /a /f ../lib/CodeSigning.pfx /p M4Si@394W6!n"
 mv -f ..\Releases\Setup.exe ..\Releases\$(TargetName).exe
 mv -f ..\Releases\Setup.msi ..\Releases\$(TargetName).msi
 )</PostBuildEvent>
