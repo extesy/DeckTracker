@@ -53,7 +53,6 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 > Yes, it automatically uploads game replays for aggregation and metagame analysis. Nothing else is shared.
 
 ## Known issues
-* Some antivirus software is known to show false positives on this deck tracker. Please add it (along with the folder `C:\Users\{profile}\AppData\Local\UniversalDeckTracker`) to the exclusion list.
 * If deck tracker is started after the game client then it sometimes might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
 
