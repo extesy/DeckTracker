@@ -3,19 +3,17 @@ Automatic in-game **Deck Tracker** for collectible card games such as [**The Eld
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](DeckTracker.Common/decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
 
-If you love the project and would like to see it improved, please consider making a [donation](https://pledgie.com/campaigns/34152) or show your [continuous support](https://gratipay.com/Deck-Tracker/).
+![The Elder Scrolls: Legends](https://user-images.githubusercontent.com/65872/27020491-b9daea98-4ef6-11e7-8ce4-7c59df1853a7.jpg)
 
-# Features
+![Eternal](https://cloud.githubusercontent.com/assets/65872/26518058/aba71222-425c-11e7-8392-ed9981a23c8b.jpg)
+
+## Features
 * Detects all your decks, no manual entry required.
 * Automatic in-game tracking of the remaining cards and the opponent's played cards.
 * No separate overlay capture window needed - very convenient for twitch streamers.
 * Tracks winrates for your decks against each type of the opponent decks.
 * Instanteneously import your deck from [legends-decks.com](http://www.legends-decks.com) or [eternalwarcry.com](https://eternalwarcry.com) using your premium cards first.
 * Easy export of your entire collection in a standard format.
-
-![Eternal](https://cloud.githubusercontent.com/assets/65872/26518058/aba71222-425c-11e7-8392-ed9981a23c8b.jpg)
-
-![The Elder Scrolls: Legends](https://user-images.githubusercontent.com/65872/27020491-b9daea98-4ef6-11e7-8ce4-7c59df1853a7.jpg)
 
 ## Keyboard shortcuts
 * F1 - show/hide entire Deck Tracker UI
@@ -60,3 +58,6 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 Please [open the issue](https://github.com/extesy/DeckTracker/issues) and describe the problem and the steps to reproduce it. If the problem is visual then please also include screenshots.
 
 In some cases it is also necessary to attach debug log files. To enable debug logging launch the tracker with `--debug` command line parameter. You can either update the desktop shortcut to include this parameter or use command line. Debug logs will be available at `C:\Users\{profile}\AppData\Roaming\UniversalDeckTracker` location and have `*.log` extension.
+
+## Donate
+If you love the project and would like to see it improved, please consider making a [one-time donation](https://pledgie.com/campaigns/34152) or show your [continuous support](https://gratipay.com/Deck-Tracker/).
