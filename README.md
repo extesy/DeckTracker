@@ -62,4 +62,4 @@ Please [open the issue](https://github.com/extesy/DeckTracker/issues) and descri
 In some cases it is also necessary to attach debug log files. To enable debug logging launch the tracker with `--debug` command line parameter. You can either update the desktop shortcut to include this parameter or use command line. Debug logs will be available at `C:\Users\{profile}\AppData\Roaming\UniversalDeckTracker` location and have `*.log` extension.
 
 ## Donate
-If you love the project and would like to see it improved, please consider making a [one-time donation](https://pledgie.com/campaigns/34152) or show your [continuous support](https://gratipay.com/Deck-Tracker/).
+If you love the project and would like to see it improved, please consider making a [one-time donation](https://www.paypal.me/OlegAnashkin) or show your [continuous support](https://gratipay.com/Deck-Tracker/).
