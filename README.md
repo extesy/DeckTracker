@@ -28,7 +28,7 @@ This tracker also tries to automatically classify the archetype of the decks you
 ## Installation
 1. For the initial install please download the [UniversalDeckTracker.exe](https://github.com/extesy/DeckTracker/releases/latest) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
 2. Launch the tracker.
-3. Start the game after launching the tracker. Game name in the tracker window should turn yellow then green. If it doesn't then see known issue #5.
+3. Start the game after launching the tracker. Game name in the tracker window should turn yellow then green. If it doesn't then see [this known issue](https://github.com/extesy/decktracker/issues/5).
 
 ## Update
 There are two options:
