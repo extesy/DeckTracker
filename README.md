@@ -16,13 +16,13 @@ This tracker also tries to automatically classify the archetype of the decks you
 * Easy export of your entire collection in a standard format.
 
 ## Keyboard shortcuts
-* F1 - show/hide entire Deck Tracker UI
 * F2 - show/hide player's deck
 * F3 - show/hide opponent's deck
 * F4 - show/hide deck header with deck archetypes and win rates
-* F5 - (Eternal only) show/hide current player's score (only for ranks below Masters)
+* F5 - show/hide original card counts together with the current counts, for example: `2/3` instead of just `2`.
 * F6 - show/hide probabilities of the next card draw (color, prophecy, type, etc)
 * F7 - show/hide cards in the deck that have 0 counts
+* F8 - (Eternal only) show/hide current player's score (only for ranks below Masters)
 * F11 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
