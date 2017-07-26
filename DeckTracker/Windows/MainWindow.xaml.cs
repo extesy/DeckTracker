@@ -367,6 +367,7 @@ namespace DeckTracker.Windows
             if (deck == null) return;
             var response = MessageBox.Show("Are you sure you want to delete this deck?", "Delete deck", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             if (response != MessageBoxResult.Yes) return;
+            var gameIds = deck.Stats.SelectMany(s => s.Games.Select(g => g.Id)).ToList();
             model.Decks.Remove(deck);
             model.FilteredDecks.Remove(deck);
             model.OnPropertyChanged(nameof(model.WinRate));
@@ -375,15 +376,15 @@ namespace DeckTracker.Windows
             using (var streamWriter = new StreamWriter(Logger.GamesFile + ".new")) {
                 string line;
                 while ((line = streamReader.ReadLine()) != null) {
-                    if (!line.Contains(deck.Id))
+                    if (!gameIds.Any(gameId => line.Contains(gameId)))
                         streamWriter.WriteLine(line);
                 }
             }
-            if (File.Exists(Logger.GamesFile + ".bak"))
-                File.Delete(Logger.GamesFile + ".bak");
-            File.Move(Logger.GamesFile, Logger.GamesFile + ".bak");
+            if (File.Exists(Logger.GamesFile + ".old"))
+                File.Delete(Logger.GamesFile + ".old");
+            File.Move(Logger.GamesFile, Logger.GamesFile + ".old");
             File.Move(Logger.GamesFile + ".new", Logger.GamesFile);
-            File.Delete(Logger.GamesFile + ".bak");
+            File.Delete(Logger.GamesFile + ".old");
         }
 
         private void ExportPlayerDeckMenuItem_OnClick(object sender, RoutedEventArgs e)

@@ -8,7 +8,7 @@
         xmlns:domain="clr-namespace:DeckTracker.Domain"
         mc:Ignorable="d"
         BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"
-        Title="Universal Deck Tracker" Height="415" Width="800" Loaded="OnLoaded" Closing="OnClosing">
+        Title="Universal Deck Tracker" Height="415" Width="800" Loaded="OnLoaded" Closing="OnClosing" Icon="/UniversalDeckTracker;component/card_deck_blue_md_3ow_icon.ico">
     <controls:MetroWindow.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </controls:MetroWindow.Resources>

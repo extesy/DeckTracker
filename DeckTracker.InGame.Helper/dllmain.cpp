@@ -120,7 +120,7 @@ VOID Inject(HMODULE hModule)
 	PVOID monodomain = nullptr;
 	for (auto attempt = 0; attempt < 5; attempt++) {
 		__try {
-			Sleep(300);
+			Sleep(500);
 			monodomain = do_mono_get_root_domain();
 			do_mono_thread_attach(monodomain);
 			break;

@@ -20,6 +20,7 @@ namespace DeckTracker.LowLevel
             public readonly string ProcessName;
             public readonly SocketStreamClient SocketStreamClient;
             public InjectionState InjectionState;
+            public int InjectionAttempt;
             public Process Process;
 //            public IntPtr Window;
 //            public WindowState WindowState;
@@ -39,6 +40,7 @@ namespace DeckTracker.LowLevel
             {
                 SocketStreamClient.Stop();
                 InjectionState = InjectionState.Idle;
+                InjectionAttempt = 0;
                 Process = null;
 //                Window = IntPtr.Zero;
 //                WindowState = WindowState.Normal;
@@ -99,6 +101,7 @@ namespace DeckTracker.LowLevel
             var currentState = GameProcessStates.FirstOrDefault(state => state.GameType == gameMessage.GameType);
             if (currentState == null) return;
             currentState.SocketStreamClient.Stop();
+            currentState.InjectionAttempt = 666;
             currentState.InjectionState = InjectionState.Failed;
         }
 
@@ -124,12 +127,13 @@ namespace DeckTracker.LowLevel
                         state.InjectionState = InjectionState.Injecting;
                         break;
                     case InjectionState.Injecting:
+                        state.InjectionAttempt++;
                         state.SocketStreamClient.Start();
                         if (SendCommand(state.GameType, CommandType.Ping) == "Pong") {
                             state.InjectionState = InjectionState.Injected;
                             break;
                         }
-                        Logger.LogDebug(state.GameType, "Injecting DeckTracker.InGame.Helper.dll");
+                        Logger.LogDebug(state.GameType, $"Injecting DeckTracker.InGame.Helper.dll, attempt #{state.InjectionAttempt}");
                         string injectionLibrary = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DeckTracker.InGame.Helper.dll");
                         state.InjectionState = DllInjector.InjectDll(state.GameType, (uint)state.Process.Id, injectionLibrary, out int _) ? InjectionState.Injected : InjectionState.Failed;
                         if (state.InjectionState == InjectionState.Injected) {
@@ -163,6 +167,8 @@ namespace DeckTracker.LowLevel
                         break;
                     case InjectionState.Failed:
                         state.SocketStreamClient.Stop();
+                        if (state.InjectionAttempt <= 3)
+                            state.InjectionState = InjectionState.Injecting;
                         break;
                 }
 
