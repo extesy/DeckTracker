@@ -25,7 +25,8 @@ namespace DeckTracker.Domain
                 subConfig = new Dictionary<string, object>();
             string jsonConfig = JsonConvert.SerializeObject(subConfig);
             if (ProcessMonitor.SendCommand(gameType, CommandType.Config, jsonConfig, 10000) != "Done")
-                ProcessMonitor.SendCommand(gameType, CommandType.Config, jsonConfig, 10000);
+            if (ProcessMonitor.SendCommand(gameType, CommandType.Config, jsonConfig, 5000) != "Done")
+                Logger.LogError("Unable to send config to in-game UI");
         }
 
         private static void OnGameMessage(GameMessage gameMessage)

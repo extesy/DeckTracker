@@ -29,6 +29,13 @@ namespace DeckTracker.LowLevel
         {
             if (gameMessage.MessageType != MessageType.Replay) return;
 
+            var replay = JsonConvert.DeserializeObject<IEnumerable<JObject>>(gameMessage.Message);
+            foreach (var entry in replay) {
+                if (entry["message"] is JValue)
+                    entry["message"] = JsonConvert.DeserializeObject<JObject>(entry["message"].Value<string>());
+            }
+            gameMessage.Message = JsonConvert.SerializeObject(replay);
+
             if (Logger.DebugMode) {
                 using (var writer = File.AppendText(ReplaysFile))
                     writer.WriteLine($"{gameMessage.Timestamp:o}|{gameMessage.GameType}|{gameMessage.Message}");
@@ -71,10 +78,10 @@ namespace DeckTracker.LowLevel
                         using (var webClient = new WebClient())
                             webClient.UploadData(uri, "PUT", compressedReplay);
                         break;
-                    } catch (ThreadInterruptedException) {
-                        attempt = int.MaxValue;
                     } catch (WebException) {
-                        Thread.Sleep(5000 * attempt * attempt);
+                        if (attempt < 3)
+                            Thread.Sleep(5000 * attempt * attempt);
+                        else throw;
                     }
                 }
             } catch (ThreadAbortException) {

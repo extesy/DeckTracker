@@ -60,10 +60,8 @@ namespace DeckTracker.LowLevel
         public static void LogError(string line)
         {
             lock (ErrorLogFile) {
-                using (var sw = File.AppendText(ErrorLogFile)) {
-                    sw.WriteLine(line);
-                    sw.WriteLine();
-                }
+                using (var sw = File.AppendText(ErrorLogFile))
+                    sw.WriteLine($"{DateTime.UtcNow:o}|{line}");
             }
         }
     }
