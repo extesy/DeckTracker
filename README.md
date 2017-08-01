@@ -57,8 +57,10 @@ Use the standard Windows `Add or Remove Programs` window and find `Universal Dec
 > Yes, it automatically uploads game replays for aggregation and metagame analysis. Nothing else is shared.
 
 ## Known issues
+* Some people have reported performance regression starting from version `1.0.60`. If you think you are affected then please add your report [here](https://github.com/extesy/DeckTracker/issues/21).
 * If deck tracker is started after the game client then it sometimes might not be able to fetch deck lists from the collection. Solution: start the tracker before the game.
 * After reconnecting to the game in progress the full deck list might not be visible or the counts might not reflect the cards already played. This is caused by the game reconnect protocol that doesn't send the deck data but only the current board state.
+* Same applies to the observer game mode.
 
 ## Reporting problems
 Please [open the issue](https://github.com/extesy/DeckTracker/issues) and describe the problem and the steps to reproduce it. If the problem is visual then please also include screenshots.
