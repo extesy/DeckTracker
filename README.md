@@ -19,11 +19,13 @@ This tracker also tries to automatically classify the archetype of the decks you
 * F2 - show/hide player's deck
 * F3 - show/hide opponent's deck
 * F4 - show/hide deck header with deck archetypes and win rates
-* F5 - show/hide original card counts together with the current counts, for example: `2/3` instead of just `2`.
+* F5 - cycle through card counting modes:
+  * current counts only, for example: `2`
+  * original card counts together with the current counts, for example: `2/3` instead of just `2`
+  * combo mode where current count is displayed only when it is different from the original count
 * F6 - show/hide probabilities of the next card draw (color, prophecy, type, etc)
 * F7 - show/hide cards in the deck that have 0 counts
 * F8 - (Eternal only) show/hide current player's score (only for ranks below Masters)
-* F11 - show/hide random deck from the player's collection for test purposes
 
 ## Installation
 1. For the initial install please download the [UniversalDeckTracker.exe](https://github.com/extesy/DeckTracker/releases/latest) distributive. Running the installer will create a desktop shortcut and put the game files into `C:\Users\{profile}\AppData\Local\UniversalDeckTracker` location.
