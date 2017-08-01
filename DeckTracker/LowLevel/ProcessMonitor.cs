@@ -144,7 +144,7 @@ namespace DeckTracker.LowLevel
                         break;
                     case InjectionState.Injected:
                         pingCounter = (pingCounter + 1) % 200;
-                        if (pingCounter == 0 && SendCommand(state.GameType, CommandType.Ping) != "Pong") {
+                        if (pingCounter == 0 && SendCommand(state.GameType, CommandType.Ping) != "Pong" && SendCommand(state.GameType, CommandType.Ping) != "Pong" && SendCommand(state.GameType, CommandType.Ping) != "Pong") {
                             state.InjectionState = InjectionState.Disconnected;
                             break;
                         }
@@ -162,7 +162,7 @@ namespace DeckTracker.LowLevel
 //                        state.OverlayWindow?.Close();
 //                        state.OverlayWindow = null;
                         pingCounter = (pingCounter + 1) % 200;
-                        if (pingCounter == 0 && SendCommand(state.GameType, CommandType.Ping) == "Pong")
+                        if (pingCounter == 0 && SendCommand(state.GameType, CommandType.Ping, 1000) == "Pong")
                             state.InjectionState = InjectionState.Injected;
                         break;
                     case InjectionState.Failed:

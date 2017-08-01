@@ -112,16 +112,12 @@ VOID Inject(HMODULE hModule)
 	do_mono_jit_parse_options = (mono_jit_parse_options)GetProcAddress(hMono, "mono_jit_parse_options");
 	do_mono_debug_init = (mono_debug_init)GetProcAddress(hMono, "mono_debug_init");
 
-	TCHAR path[MAX_PATH];
-	GetModuleFileName(hModule, path, MAX_PATH);
-	PathRemoveFileSpec(path);
-	PathAppend(path, L"DeckTracker.InGame.dll");
-
 	PVOID monodomain = nullptr;
 	for (auto attempt = 0; attempt < 5; attempt++) {
 		__try {
 			Sleep(500);
 			monodomain = do_mono_get_root_domain();
+			if (monodomain == nullptr) LogError(L"Error happened while calling mono_get_root_domain\r\n");
 			do_mono_thread_attach(monodomain);
 			break;
 		} __except (EXCEPTION_EXECUTE_HANDLER) {
@@ -133,8 +129,14 @@ VOID Inject(HMODULE hModule)
 	if (monodomain == nullptr) return;
 
 	__try {
+		TCHAR path[MAX_PATH];
+		GetModuleFileName(hModule, path, MAX_PATH);
+		PathRemoveFileSpec(path);
+		PathAppend(path, L"DeckTracker.InGame.dll");
+
 		char sPath[MAX_PATH];
 		WideCharToMultiByte(CP_UTF8, 0, path, wcslen(path) + 1, sPath, sizeof sPath, nullptr, nullptr);
+
 		auto assembly = do_mono_domain_assembly_open(monodomain, sPath);
 		if (assembly == nullptr) LogError(L"Error happened while calling mono_domain_assembly_open\r\n");
 		auto image = do_mono_assembly_get_image(assembly);
