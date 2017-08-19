@@ -13,7 +13,8 @@ namespace DeckTracker.Domain.Eternal
         Demo = 7,
         Challenge = 8,
         Story = 9,
-        Event = 10
+        Event = 10,
+        Puzzle = 11
     }
 
     public static partial class Helpers
@@ -30,6 +31,7 @@ namespace DeckTracker.Domain.Eternal
                 case "FriendChallenge": return GameMode.Challenge;
                 case "MicroCampaign": return GameMode.Story;
                 case "Event": return GameMode.Event;
+                case "Puzzle": return GameMode.Puzzle;
                 default: throw new ArgumentException($@"Unable to convert {type} into GameMode", nameof(type));
             }
         }

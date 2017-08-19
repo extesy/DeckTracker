@@ -23,6 +23,11 @@ namespace DeckTracker.Domain
             if (injectionState != InjectionState.Injected) return;
             if (!config.TryGetValue(gameType.ToString(), out var subConfig))
                 subConfig = new Dictionary<string, object>();
+#if DEBUG
+            subConfig["debug"] = true;
+#else
+            subConfig.Remove("debug");
+#endif
             string jsonConfig = JsonConvert.SerializeObject(subConfig);
             if (ProcessMonitor.SendCommand(gameType, CommandType.Config, jsonConfig, 10000) != "Done")
             if (ProcessMonitor.SendCommand(gameType, CommandType.Config, jsonConfig, 5000) != "Done")
@@ -33,6 +38,7 @@ namespace DeckTracker.Domain
         {
             if (gameMessage.MessageType != MessageType.Config) return;
             var subConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(gameMessage.Message);
+            subConfig.Remove("debug");
             config[gameMessage.GameType.ToString()] = subConfig;
             File.WriteAllText(ConfigFile, JsonConvert.SerializeObject(config));
         }

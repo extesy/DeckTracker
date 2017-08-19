@@ -41,7 +41,7 @@ namespace DeckTracker.LowLevel
                     writer.WriteLine($"{gameMessage.Timestamp:o}|{gameMessage.GameType}|{gameMessage.Message}");
             }
 
-            var thread = new Thread(UploadReplay) {Name = "ReplayUploader"};
+            var thread = new Thread(UploadReplay) {Name = "ReplayUploader", Priority = ThreadPriority.Lowest};
             thread.Start(gameMessage);
             Threads.Add(thread);
         }

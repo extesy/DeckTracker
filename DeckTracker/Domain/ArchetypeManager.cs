@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -28,7 +30,7 @@ namespace DeckTracker.Domain
             LoadArchetypes();
             ProcessMonitor.OnGameInjectionStateChange += (gameType, injectionState) => {
                 if (injectionState == InjectionState.Injected && thread == null) {
-                    thread = new Thread(RefreshArchetypes) {Name = "ArchetypeManager"};
+                    thread = new Thread(RefreshArchetypes) {Name = "ArchetypeManager", Priority = ThreadPriority.Lowest};
                     thread.Start(gameType);
                 }
             };
@@ -101,6 +103,11 @@ namespace DeckTracker.Domain
                 var cards = page.SelectSingleNode("//textarea[@id='export-deck-text']").InnerHtml.Trim();
                 return $"### {name} ###\r\n{cards}";
             }
+            if (url.Contains("teslegends.pro")) {
+                var slug = url.Substring(url.TrimEnd('/').LastIndexOf('/')).Trim('/');
+                var response = new WebClient().UploadValues("https://teslegends.pro/dc/do.php", "POST", new NameValueCollection {{"exportdeck", slug}});
+                return Encoding.UTF8.GetString(response);
+            }
             return null;
         }
 
@@ -115,7 +122,7 @@ namespace DeckTracker.Domain
         public static bool ImportDeck(GameType gameType, string deck)
         {
             var collection = GetCollection(gameType);
-            var lines = deck.Split('\n').Select(line => line.Trim());
+            var lines = deck.Split('\n').Select(line => line.Trim().Replace("&#39;", "'").Replace('`', '\''));
             string deckName = null;
             var cardIds = new List<string>();
             var colors = new HashSet<string>();

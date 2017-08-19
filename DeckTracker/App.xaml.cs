@@ -21,6 +21,7 @@ namespace DeckTracker
             base.OnStartup(e);
             if (e.Args.Contains("--debug"))
                 Logger.DebugMode = true;
+            AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
 
             mutex = new Mutex(true, "Local\\DeckTracker", out bool isNew);
             if (!isNew) {
@@ -49,6 +50,14 @@ namespace DeckTracker
 #if !DEBUG
             Update();
 #endif
+        }
+
+        private static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
+        {
+            var ex = (Exception)e.ExceptionObject;
+            Logger.LogError(ex.ToString());
+            MessageBox.Show($"Something went wrong...\n{ex.Message}", "Error");
+            Environment.Exit(1);
         }
 
         protected override void OnExit(ExitEventArgs e)
