@@ -289,6 +289,21 @@ namespace DeckTracker.Windows
                 ExportCollectionButton.IsEnabled = injectionState == InjectionState.Injected;
                 ImportDeckButton.IsEnabled = injectionState == InjectionState.Injected;
             };
+
+            LeftWindowCommands.Visibility = Visibility.Collapsed;
+            UpdateManager.OnNewVersion += newVersion => Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => OnNewVersion(newVersion)));
+        }
+
+        private void OnNewVersion(string newVersion)
+        {
+            LeftWindowCommands.Visibility = Visibility.Visible;
+            RestartButton.Content = $"New version {newVersion} is available. Restart the tracker?";
+        }
+
+        private void Restart_OnClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
