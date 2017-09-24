@@ -6,9 +6,6 @@ using DeckTracker.Domain;
 using DeckTracker.LowLevel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-#if !DEBUG
-using Squirrel;
-#endif
 
 namespace DeckTracker
 {
@@ -47,9 +44,10 @@ namespace DeckTracker
             }
             GameMessageDispatcher.Start();
             ProcessMonitor.Start();
-#if !DEBUG
-            Update();
+#if !DEBUG            
+            UpdateUtils.StartUpdateCheck();
 #endif
+            
         }
 
         private static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
@@ -70,15 +68,5 @@ namespace DeckTracker
             base.OnExit(e);
         }
 
-#if !DEBUG
-        private static async void Update()
-        {
-            try {
-                using (var updateManager = await UpdateManager.GitHubUpdateManager("https://github.com/extesy/DeckTracker"))
-                    await updateManager.UpdateApp();
-            } catch {
-            }
-        }
-#endif
     }
 }

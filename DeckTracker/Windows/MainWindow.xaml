@@ -17,6 +17,11 @@
             <Button Content="Report bugs" Click="ReportBugs_OnClick" ToolTip="https://github.com/extesy/decktracker/issues" />
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
+    <controls:MetroWindow.LeftWindowCommands>
+        <controls:WindowCommands>
+            <Button x:Name="RestartButton" Content="New version is available. Restart?" Click="Restart_OnClick" ToolTip="Restart and update Universal Deck Tracker"/>
+        </controls:WindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />

@@ -101,6 +101,7 @@
     <Compile Include="Domain\Deck.cs" />
     <Compile Include="Domain\Game.cs" />
     <Compile Include="Properties\AssemblyCommonInfo.cs" />
+    <Compile Include="UpdateUtils.cs" />
     <Compile Include="Windows\ImportDeckDialog.xaml.cs">
       <DependentUpon>ImportDeckDialog.xaml</DependentUpon>
     </Compile>
