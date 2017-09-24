@@ -45,9 +45,8 @@ namespace DeckTracker
             GameMessageDispatcher.Start();
             ProcessMonitor.Start();
 #if !DEBUG            
-            UpdateUtils.StartUpdateCheck();
+            UpdateManager.StartUpdateCheck();
 #endif
-            
         }
 
         private static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)

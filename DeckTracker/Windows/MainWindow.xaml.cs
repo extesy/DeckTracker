@@ -291,13 +291,13 @@ namespace DeckTracker.Windows
             };
 
             LeftWindowCommands.Visibility = Visibility.Collapsed;
-            UpdateUtils.OnNewVersion += newVersion => Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => OnNewVersion(newVersion)));
+            UpdateManager.OnNewVersion += newVersion => Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => OnNewVersion(newVersion)));
         }
 
         private void OnNewVersion(string newVersion)
         {
             LeftWindowCommands.Visibility = Visibility.Visible;
-            RestartButton.Content = "New version " + newVersion + " is available. Restart UDT?";           
+            RestartButton.Content = $"New version {newVersion} is available. Restart the tracker?";
         }
 
         private void Restart_OnClick(object sender, RoutedEventArgs e)
