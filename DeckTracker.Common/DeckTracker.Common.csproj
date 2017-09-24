@@ -39,6 +39,12 @@
     </Compile>
     <Compile Include="Domain\CardAction.cs" />
     <Compile Include="Domain\CompressionFormat.cs" />
+    <Compile Include="Domain\DTO\Card.cs" />
+    <Compile Include="Domain\DTO\UploadedReplay.cs" />
+    <Compile Include="Domain\DTO\Game.cs" />
+    <Compile Include="Domain\DTO\PlayCard.cs" />
+    <Compile Include="Domain\DTO\PlayDeck.cs" />
+    <Compile Include="Domain\DTO\Player.cs" />
     <Compile Include="Domain\DeckClassifier.cs" />
     <Compile Include="Domain\Eternal\Attribute.cs" />
     <Compile Include="Domain\Eternal\Extensions\Extensions.cs" />
@@ -49,9 +55,6 @@
     <Compile Include="Domain\Eternal\Type.cs" />
     <Compile Include="Domain\GameType.cs" />
     <Compile Include="Domain\MessageType.cs" />
-    <Compile Include="Domain\NotifyObservableCollection.cs" />
-    <Compile Include="Domain\ObservableDictionary.cs" />
-    <Compile Include="Domain\ObservableSortedList.cs" />
     <Compile Include="Domain\PlayerSide.cs" />
     <Compile Include="Domain\SerializationFormat.cs" />
     <Compile Include="Domain\TheElderScrollsLegends\Attribute.cs" />
@@ -72,6 +75,11 @@
     <Content Include="decktypes.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations">
+      <Version>4.4.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

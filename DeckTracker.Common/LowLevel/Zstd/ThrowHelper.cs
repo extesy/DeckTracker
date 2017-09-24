@@ -17,7 +17,11 @@ namespace DeckTracker.LowLevel.Zstd
         {
             uint code = unchecked(0 - (uint)(ulong)returnValue); // Negate returnValue (UintPtr)
             if (code == ZSTD_error_dstSize_tooSmall)
+#if NETSTANDARD2_0
+                throw new OutOfMemoryException(message);
+#else
                 throw new InsufficientMemoryException(message);
+#endif
             throw new ZstdException(message);
         }
 

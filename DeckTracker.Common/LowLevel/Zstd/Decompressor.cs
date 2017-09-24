@@ -51,7 +51,11 @@ namespace DeckTracker.LowLevel.Zstd
             int dstSize;
             try {
                 dstSize = Decompress(src, dst, 0, false);
+#if NETSTANDARD2_0
+            } catch (OutOfMemoryException) {
+#else
             } catch (InsufficientMemoryException) {
+#endif
                 throw new ZstdException("Invalid decompressed size");
             }
 
@@ -73,7 +77,11 @@ namespace DeckTracker.LowLevel.Zstd
                 if (bufferSizePrecheck) {
                     ulong expectedDstSize = ExternMethods.ZSTD_getDecompressedSize(srcPtr, (size_t)src.Count);
                     if ((int)expectedDstSize > dstCapacity)
+#if NETSTANDARD2_0
+                        throw new OutOfMemoryException("Buffer size is less than specified decompressed data size");
+#else
                         throw new InsufficientMemoryException("Buffer size is less than specified decompressed data size");
+#endif
                 }
 
                 size_t dstSize;

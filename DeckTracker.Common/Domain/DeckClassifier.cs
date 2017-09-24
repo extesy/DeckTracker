@@ -1,11 +1,17 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+#if NETSTANDARD2_0
+using System.Runtime.Loader;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+#else
+using System.CodeDom.Compiler;
 using Microsoft.CSharp;
+#endif
 
 namespace DeckTracker.Domain
 {
@@ -36,6 +42,7 @@ namespace DeckTracker.Domain
 
         public static void Initialize()
         {
+#if !NETSTANDARD2_0
             var codeProvider = new CSharpCodeProvider();
             var compilerParameters = new CompilerParameters {
                 GenerateInMemory = true,
@@ -43,6 +50,7 @@ namespace DeckTracker.Domain
                 WarningLevel = 4,
                 ReferencedAssemblies = {"System.dll", "System.Core.dll"}
             };
+#endif
             var code = new StringBuilder();
             code.AppendLine(@"
 using System.Collections.Generic;
@@ -112,20 +120,47 @@ public static class DeckClassifier {
             }
             code.AppendLine("}");
 
+#if NETSTANDARD2_0
+            var tree = SyntaxFactory.ParseSyntaxTree(code.ToString());
+            var compilation = CSharpCompilation.Create(
+                "DeckTracker.Classification.dll",
+                options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary),
+                syntaxTrees: new[] {tree},
+                references: new[] {MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location)});
+
+            var errorsAndWarnings = compilation.GetDiagnostics();
+            if (errorsAndWarnings.IsEmpty) {
+                using (var stream = new MemoryStream()) {
+                    var compileResult = compilation.Emit(stream);
+                    var assembly = AssemblyLoadContext.Default.LoadFromStream(stream);
+                    var type = assembly.GetType("DeckClassifier").GetTypeInfo();
+#else
             var results = codeProvider.CompileAssemblyFromSource(compilerParameters, code.ToString());
             if (!results.Errors.HasErrors) {
                 var assembly = results.CompiledAssembly;
                 var type = assembly.GetType("DeckClassifier");
-                gameTypeField = type.GetField("GameType", BindingFlags.Public | BindingFlags.Static);
-                setColorsMethod = type.GetMethod("SetColors", BindingFlags.Public | BindingFlags.Static);
-                setCardsMethod = type.GetMethod("SetCards", BindingFlags.Public | BindingFlags.Static);
-                setWordsMethod = type.GetMethod("SetWords", BindingFlags.Public | BindingFlags.Static);
-                for (int i = 0; i < deckDefinitions.Count; i++)
-                    deckDefinitions[i].Script = type.GetMethod($"IsDeck{i}", BindingFlags.Public | BindingFlags.Static);
-            } else {
+#endif
+                    gameTypeField = type.GetField("GameType", BindingFlags.Public | BindingFlags.Static);
+                    setColorsMethod = type.GetMethod("SetColors", BindingFlags.Public | BindingFlags.Static);
+                    setCardsMethod = type.GetMethod("SetCards", BindingFlags.Public | BindingFlags.Static);
+                    setWordsMethod = type.GetMethod("SetWords", BindingFlags.Public | BindingFlags.Static);
+                    for (int i = 0; i < deckDefinitions.Count; i++)
+                        deckDefinitions[i].Script = type.GetMethod($"IsDeck{i}", BindingFlags.Public | BindingFlags.Static);
+#if NETSTANDARD2_0
+                }
+#endif
+            }
+            else {
                 var errors = new StringBuilder();
+#if NETSTANDARD2_0
+                foreach (var error in errorsAndWarnings) {
+                    var position = error.Location.GetLineSpan().StartLinePosition;
+                    errors.AppendLine($"Location: {position.Line}:{position.Character}, Error Number: {error.Descriptor.Id}, Error: {error.GetMessage()}");
+                }
+#else
                 foreach (CompilerError error in results.Errors)
                     errors.AppendLine($"Line number {error.Line}, Error Number: {error.ErrorNumber}, Error: {error.ErrorText}");
+#endif
                 throw new Exception($"Unable to parse deck types: {errors}");
             }
 
