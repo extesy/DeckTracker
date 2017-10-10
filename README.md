@@ -3,6 +3,10 @@ Automatic in-game **Deck Tracker** for collectible card games such as [**The Eld
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](DeckTracker.Common/decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
 
+**Check out [this video](https://www.youtube.com/watch?v=-iHewjQG1S0) by @TESLegendsCentral for setup guide or follow the [instructions](#installation) below.**
+
+#
+
 ![The Elder Scrolls: Legends](https://user-images.githubusercontent.com/65872/27020491-b9daea98-4ef6-11e7-8ce4-7c59df1853a7.jpg)
 
 ![Eternal](https://cloud.githubusercontent.com/assets/65872/26518058/aba71222-425c-11e7-8392-ed9981a23c8b.jpg)
