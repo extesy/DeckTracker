@@ -1,5 +1,5 @@
 # Universal Deck Tracker
-Automatic in-game **Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.eternalcardgame.com/). Unlike all other trackers for these games, this one *does not* modify game files so it is compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
+Automatic in-game **Deck Tracker** for collectible card games such as [**The Elder Scrolls: Legends**](https://legends.bethesda.net) and [**Eternal**](https://www.direwolfdigital.com/eternal/register/?ref=8435f108-373e-4fde-80d1-0034d4a1d7e3). Unlike all other trackers for these games, this one *does not* modify game files so it is compliant with Terms of Service agreements. Using trackers that modify game files might get your account banned. As an additional benefit it doesn't break when the game update is released.
 
 This tracker also tries to automatically classify the archetype of the decks you were playing against so that winrates are displayed separately per deck type. This algorithm is work in progress and the configuration file that specifies all deck types is located [here](DeckTracker.Common/decktypes.txt). Feel free to [suggest](https://github.com/extesy/DeckTracker/issues) improvements to it.
 
@@ -16,7 +16,7 @@ This tracker also tries to automatically classify the archetype of the decks you
 * Automatic in-game tracking of the remaining cards and the opponent's played cards.
 * No separate overlay capture window needed - very convenient for twitch streamers.
 * Tracks winrates for your decks against each type of the opponent decks.
-* Instanteneously import your deck from [legends-decks.com](http://www.legends-decks.com) or [eternalwarcry.com](https://eternalwarcry.com) using your premium cards first.
+* Instanteneously import your deck from [legends-decks.com](https://www.legends-decks.com), [teslegends.pro](https://teslegends.pro) or [eternalwarcry.com](https://eternalwarcry.com).
 * Easy export of your entire collection in a standard format.
 
 ## Keyboard shortcuts
