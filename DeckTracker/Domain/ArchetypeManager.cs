@@ -154,10 +154,12 @@ namespace DeckTracker.Domain
                 int cardTypeAttributeId = gameType == GameType.Eternal ? (int)Eternal.Attribute.CardType : (int)TheElderScrollsLegends.Attribute.HydraCardType;
 
                 bool CheckCardNumber(IReadOnlyDictionary<int, object> attrs) => cardNumber != null && cardNumber == GetCardNumber(gameType, attrs) &&
-                    cardSet == int.Parse(attrs[gameType == GameType.Eternal ? (int)Eternal.Attribute.SetNumber : (int)TheElderScrollsLegends.Attribute.SetNumber].ToString());
+                    attrs.TryGetValue(gameType == GameType.Eternal ? (int)Eternal.Attribute.SetNumber : (int)TheElderScrollsLegends.Attribute.SetNumber, out var cardSetValue) &&
+                    cardSet == int.Parse(cardSetValue.ToString());
 
                 bool CheckCardType(IReadOnlyDictionary<int, object> attrs) =>
-                    (attrs.TryGetValue(rarityAttributeId, out var rarity) && (string)rarity != "Special" || attrs.TryGetValue(cardTypeAttributeId, out var cardType) && (string)cardType == "Power") &&
+                    (attrs.TryGetValue(rarityAttributeId, out var rarityValue) && (string)rarityValue != "Special" ||
+                     attrs.TryGetValue(cardTypeAttributeId, out var cardTypeValue) && (string)cardTypeValue == "Power") &&
                     (gameType != GameType.TheElderScrollsLegends || !(bool)attrs[(int)TheElderScrollsLegends.Attribute.HydraHiddenFromDeckbuilder]);
 
                 var matchingNames = allArchetypes[gameType].Where(a => CheckCardNumber(a.Value) || a.Value.ContainsKey(nameAttributeId) && a.Value[nameAttributeId].ToString() == cardName).ToList();
@@ -178,7 +180,6 @@ namespace DeckTracker.Domain
                 }
             }
             colors.Remove("Neutral");
-            if (colors.Count > 2) throw new Exception($"Too many card colors in deck: {colors.Count}");
             string cardsList = string.Join(",", cardIds);
             string message = deckName != null ? $"{deckName}|{cardsList}" : cardsList;
             return ProcessMonitor.SendCommand(gameType, CommandType.ImportDeck, message, 1000) == "Done";

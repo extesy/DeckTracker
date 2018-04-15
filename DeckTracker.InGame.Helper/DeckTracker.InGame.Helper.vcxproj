@@ -26,7 +26,7 @@
     <ProjectGuid>{AF029F43-81EA-4E43-8153-405FFF6A273F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Helper</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectName>DeckTracker.InGame.Helper</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

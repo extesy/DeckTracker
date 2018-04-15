@@ -372,6 +372,7 @@ namespace DeckTracker.Windows
                 } else
                     MessageBox.Show("Something went wrong...", "Error");
             } catch (Exception ex) {
+                Logger.LogError(ex.ToString());
                 MessageBox.Show($"Something went wrong...\n\n{ex.Message}", "Error");
             }
         }
@@ -415,6 +416,7 @@ namespace DeckTracker.Windows
                 else
                     MessageBox.Show(blockingWindowText != null ? $"Unable to access clipboard.\nPlease close this window: {blockingWindowText}" : "Unable to access clipboard.", "Error");
             } catch (Exception ex) {
+                Logger.LogError(ex.ToString());
                 MessageBox.Show($"Something went wrong...\n{ex.Message}", "Error");
             }
         }
@@ -439,6 +441,7 @@ namespace DeckTracker.Windows
                 else
                     MessageBox.Show(blockingWindowText != null ? $"Unable to access clipboard.\nPlease close this window: {blockingWindowText}" : "Unable to access clipboard.", "Error");
             } catch (Exception ex) {
+                Logger.LogError(ex.ToString());
                 MessageBox.Show($"Something went wrong...\n{ex.Message}", "Error");
             }
         }
@@ -465,6 +468,7 @@ namespace DeckTracker.Windows
                 else
                     MessageBox.Show("Something went wrong... Deck has not been imported", "Error");
             } catch (Exception ex) {
+                Logger.LogError(ex.ToString());
                 MessageBox.Show($"Something went wrong...\n{ex.Message}", "Error");
             }
         }

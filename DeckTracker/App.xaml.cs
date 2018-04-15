@@ -16,6 +16,7 @@ namespace DeckTracker
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
             if (e.Args.Contains("--debug"))
                 Logger.DebugMode = true;
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
