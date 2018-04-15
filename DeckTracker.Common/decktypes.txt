@@ -105,3 +105,9 @@ $The Elder Scrolls: Legends|GameType=="TheElderScrollsLegends"
 |||Orc Warrior|Cards.ContainsAny(1,"Wood Orc Headhunter","Militant Chieftain","Wrothgar Kingpin","Chieftain's Banner")
 |||Rage Warrior|Cards.Contains("Unstoppable Rage") || Cards.ContainsAny(3,"Night Shadow","Falkreath Defiler","Belligerent Giant","Blood Magic Lord","Child of Hircine","Vigilant Giant")
 |||Doomcrag Warrior|Cards.Contains("Doomcrag Vampire")
+|$Factions|Colors.Count==3
+||House Dagoth|Colors.Contains("Strength","Intelligence","Agility")
+||House Hlaalu|Colors.Contains("Strength","Willpower","Agility")
+||House Redoran|Colors.Contains("Strength","Willpower","Endurance")
+||House Telvanni|Colors.Contains("Intelligence","Agility","Endurance")
+||Tribunal Temple|Colors.Contains("Intelligence","Willpower","Endurance")
